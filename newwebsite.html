@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<title>/noname x3</title>
+</head>
+
+<body>
+<header>
+<a href="#" class="logo">/noname X3 - Script Logger</a>
+
+<nav>
+    <nav>
+        <a href="#" class="active" onclick="playSound()">Home</a>
+        <a href="#login" id="login-tab" onclick="playSound()">Login</a>
+        <a href="#create-account" id="create-account-tab" onclick="playSound()">Create Account</a>
+        <a href="#" id="logout-tab" style="display: none;" onclick="playSound()">Logout</a>
+        <audio id="clickSound" src="click.wav" style="display: none;"></audio>
+        <script>
+        function playSound() {
+        document.getElementById("clickSound").play();
+        }
+        </script>
+        </nav>
+</nav>
+</header>
+
+<!-- Added some padding to the header to separate it from the logo -->
+<header style="padding-bottom: 20px;"></header>
+
+<section class="home">
+<div class="home-img">
+<img src="New Project.png" alt="">
+</div>
+<div class="home-content">
+<h1>X3 script<span> logger</span></h1>
+<h3 class="typing-text">Start Beaming now<span></span></h3>
+<p></p>
+<div class="social-icons">
+<a href="#"><i class="fa-brands fa-discord"></i></a>
+<a href="https://www.youtube.com/@ayesha1157" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+</div>
+<a href="https://discord.gg/uaXmrYDH" class="btn">Join the discord!</a>
+</div>
+</section>
+
+<!-- Added login form -->
+    <section id="login">
+    <div class="login-container">
+        <h3 style="text-align: center; text-shadow: 0 0 15px #007bff, 0 0 20px #007bff; color: #4ca3af; font-size: 30px; margin-bottom: 15px;">Login</h3>    <form>
+            <form>
+    <div class="home-content">
+        <h3 style="text-shadow: 0 0 10px #007bff; color: #4ca3af;">Username:</h3>
+    <input type="text" id="login-username" name="username" style="padding: 10px; border: 2px solid #007bff; border-radius: 10px; width: 100%; font-size: 16px; background-color: #000; color: #4ca3af; box-shadow: 0 0 10px #007bff;">    <p></p>
+    <h3 style="text-shadow: 0 0 10px #007bff; color: #4ca3af;">Password:</h3>
+    <input type="password" id="login-password" name="password" style="padding: 10px; border: 2px solid #007bff; border-radius: 10px; width: 100%; font-size: 16px; background-color: #000; color: #4ca3af; box-shadow: 0 0 10px #007bff;">
+    <p></p>
+    <div style="text-align: center;">
+    <a class="btn" onclick="login()">Login</a>
+    <p id="login-message"></p>
+    </div>
+    </div>
+    </form>
+    </div>
+    </section>
+    
+    <section id="create-account">
+    <div class="login-container">
+        <h3 style="text-align: center; text-shadow: 0 0 15px #007bff, 0 0 20px #007bff; color: #4ca3af; font-size: 30px; margin-bottom: 15px;">Create Account</h3>    <form>
+    <div class="home-content">
+        <h3 style="text-shadow: 0 0 10px #007bff; color: #4ca3af;">Username:</h3>
+        <input type="text" id="username" name="username" style="padding: 10px; border: 2px solid #007bff; border-radius: 10px; width: 100%; font-size: 16px; background-color: #000; color: #4ca3af; box-shadow: 0 0 10px #007bff;">
+        <p></p>
+        <h3 style="text-shadow: 0 0 10px #007bff; color: #4ca3af;">Password:</h3>
+        <input type="password" id="password" name="password" style="padding: 10px; border: 2px solid #007bff; border-radius: 10px; width: 100%; font-size: 16px; background-color: #000; color: #4ca3af; box-shadow: 0 0 10px #007bff;">
+        <p></p>
+        
+        <h3 style="text-shadow: 0 0 10px #007bff; color: #4ca3af;">Key:</h3>
+    <input type="text" id="key" name="key" style="padding: 10px; border: 2px solid #007bff; border-radius: 10px; width: 100%; font-size: 16px; background-color: #000; color: #4ca3af; box-shadow: 0 0 10px #007bff;">
+    <p></p>
+        <p style="margin-bottom: 20px;"></p>
+<div style="text-align: center;">
+<a class="btn" onclick="checkKey()">Create Account</a><p id="key-message"></p>
+</div>
+</div>
+</form>
+</div>
+</section>
+
+<script>
+var credentials = {};
+var loggedIn = false;
+
+function checkKey() {
+var key = document.getElementById("key").value;
+var validKeys = ["KEY1", "KEY2", "KEY3"]; // Add your valid keys here
+
+if (validKeys.includes(key)) {
+credentials.username = document.getElementById("username").value;
+credentials.password = document.getElementById("password").value;
+document.getElementById("key-message").innerHTML = "<span style='color: green;'>Correct key!</span>";
+} else {
+document.getElementById("key-message").innerHTML = "<span style='color: red;'>Invalid key!</span>";
+}
+}
+
+function login() {
+var username = document.getElementById("login-username").value;
+var password = document.getElementById("login-password").value;
+
+if (credentials.username === username && credentials.password === password) {
+document.getElementById("login-message").innerHTML = "<span style='color: green; font-size: 24px;'>LOGGED IN</span>";
+document.getElementById("login-tab").style.display = "none";
+document.getElementById("create-account-tab").style.display = "none";
+document.getElementById("logout-tab").style.display = "block";
+loggedIn = true;
+} else {
+document.getElementById("login-message").innerHTML = "Password or username is incorrect";
+}
+}
+
+function logout() {
+document.getElementById("login-message").innerHTML = "";
+document.getElementById("login-tab").style.display = "block";
+document.getElementById("create-account-tab").style.display = "block";
+document.getElementById("logout-tab").style.display = "none";
+loggedIn = false;
+}
+</script>
+</script>
+</body>
+</html>

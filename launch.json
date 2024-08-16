@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+    {
+    "type": "chrome",
+    "request": "launch",
+    "name": "Open HTML file in Chrome",
+    "file": "newwebsite.html"
+    },
+    {
+    "type": "edge",
+    "request": "launch",
+    "name": "Open HTML file in Microsoft Edge",
+    "file": "newwebsite.html"
+    },
+    {
+    "type": "opera",
+    "request": "launch",
+    "name": "Open HTML file in Opera GX",
+    "file": "newwebsite.html"
+    }
+    ]
+    }
